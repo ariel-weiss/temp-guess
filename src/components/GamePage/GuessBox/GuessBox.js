@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useState } from 'react'
+import { useDispatch } from 'react-redux';
 import { addGuess } from '../../../redux/game/gameActions';
 import { nextCity } from '../../../redux/city/cityActions';
 

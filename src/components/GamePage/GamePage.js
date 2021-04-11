@@ -20,7 +20,7 @@ const GamePage = () => {
 
     return (
         <div className='game-container'>
-            {guesses.length === n_cities ? 'Game Over: ' + (score < 3 ? "You WON!" : "You Lose...") :
+            {guesses.length === n_cities ? 'Game Over: ' + (score >= 3 ? "You WON!" : "You Lose...") :
                 
             fetching_error ? "Error! " + {fetching_error} :
             !cities ? 'Loading...':

@@ -8,8 +8,7 @@ const ScoreBar = () => {
     const answers = useSelector(state => state.game.answers);
     
     const checkDeviation = (guess, idx) => {
-        console.log(Number(guess) <= (answers[idx]) + 5 && Number(guess) >= (answers[idx]) - 5);
-        return (Number(guess) <= (answers[idx]) + 5 && Number(guess) >= (answers[idx]) - 5)
+        return (guess <= (answers[idx]) + 5 && guess >= (answers[idx]) - 5)
     };
     
     return (
