@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchCities } from '../../redux/city/cityActions';
 
 import GuessBox from './GuessBox/GuessBox'
+import './style.css';
 
 const GamePage = () => {
     const n_cities = 5;
@@ -18,7 +19,7 @@ const GamePage = () => {
     }, [])
 
     return (
-        <div>
+        <div className='game-container'>
             {guesses.length === n_cities ? 'Game Over: ' + (score < 3 ? "You WON!" : "You Lose...") :
                 
             fetching_error ? "Error! " + {fetching_error} :
