@@ -5,13 +5,13 @@ import { nextCity } from '../../../redux/city/cityActions';
 
 const GuessBox = () => {
     const dispatch = useDispatch();
-    const [guess, setGuess] = useState('');
+    const [guess, setGuess] = useState(0);
     
     const handleGuess = (e) => {
         e.preventDefault();
         dispatch(addGuess(guess));
         dispatch(nextCity());
-        setGuess('');
+        setGuess(0);
     }
     return (
         <div>

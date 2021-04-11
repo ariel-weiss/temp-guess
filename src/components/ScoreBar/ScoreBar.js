@@ -19,7 +19,7 @@ const ScoreBar = () => {
                         <div key={answers[idx]}>{ 
                                 <div className={checkDeviation(guess, idx) ? 'good-guess' : 'bad-guess'}>
                                     <div> {guess} </div>
-                                    <div>  Was {answers[idx]}</div>
+                                    <div>  Was {Number(answers[idx]).toFixed(4)}</div>
                                 </div>
                         }</div>
                     )
