@@ -2,8 +2,9 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 const ScoreBar = () => {
 
-    const guesses = useSelector(state => state.game.guesses);
+    const guesses = useSelector(state => state.game.guesses.map((g, id) => state.game.guesses[id]));
     const answers = useSelector(state => state.game.answers);
+    
     
     return (
         <div>
@@ -12,7 +13,7 @@ const ScoreBar = () => {
                 {
                     guesses &&
                     guesses.map((guess, idx) => (
-                        <div key={idx}>{ 
+                        <div key={answers[idx]}>{ 
                             (guess <= answers[idx] + 5 && guess >= answers[idx] - 5) ?
                                 <div>Good {guess} / {answers[idx]}</div>
                                 :
