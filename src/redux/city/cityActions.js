@@ -8,20 +8,20 @@ const KtoC = (temp) => (temp- 273.15);
 
 export const fetchCities = (n_cities) => (dispatch) => {
     dispatch({ type: cityTypes.FETCH_CITIES_REQUEST, payload: n_cities });
+    let cities = [];
     let temperatures = [];
-    let temps = [];
     let promises = [];
     for (let i = 0; i < n_cities; i++) {
         promises.push(
             fetch(apiRequest(mockCities[i]))
             .then(res => res.json())
             .then(json => {
-                temperatures.push({
+                cities.push({
                     id: i,
                     name: mockCities[i],
                     temp: KtoC(json?.main?.temp),
                 });
-                temps.push(KtoC(json?.main?.temp));
+                temperatures.push(KtoC(json?.main?.temp));
             })
             .catch(err => {
                 dispatch({ type: cityTypes.FETCH_CITIES_ERROR, payload: err });
@@ -30,8 +30,8 @@ export const fetchCities = (n_cities) => (dispatch) => {
         )
     }
     Promise.all(promises).then(() => {
-        dispatch({ type: cityTypes.FETCH_CITIES_SUCCESS, payload: temperatures });
-        dispatch({ type: gameTypes.INIT_ANSWERS, payload: temps });
+        dispatch({ type: cityTypes.FETCH_CITIES_SUCCESS, payload: cities });
+        dispatch({ type: gameTypes.INIT_ANSWERS, payload: temperatures });
     }).catch(err => {
         dispatch({ type: cityTypes.FETCH_CITIES_ERROR, payload: err });
     })
