@@ -14,7 +14,6 @@ export const fetchCities = (n_cities) => (dispatch) => {
             fetch(apiRequest(mockCities[i]))
             .then(res => res.json())
             .then(json => {
-                console.log(json?.main);
                 temperatures.push({
                     id: i,
                     name: mockCities[i],

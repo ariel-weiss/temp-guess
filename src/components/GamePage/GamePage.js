@@ -11,6 +11,7 @@ const GamePage = () => {
     const cities = useSelector(state => state.city.cities);
     const fetching_error = useSelector(state => state.city.error);
     const guesses = useSelector(state => state.game.guesses);
+    const score = useSelector(state => state.game.score);
     
     useEffect(() => {
         dispatch(fetchCities(n_cities));
@@ -18,7 +19,7 @@ const GamePage = () => {
 
     return (
         <div>
-            {guesses.length === n_cities ? 'Game Over' :
+            {guesses.length === n_cities ? 'Game Over: ' + (score < 3 ? "You WON!" : "You Lose...") :
                 
             fetching_error ? "Error! " + {fetching_error} :
             !cities ? 'Loading...':

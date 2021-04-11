@@ -11,6 +11,7 @@ const GuessBox = () => {
         e.preventDefault();
         dispatch(addGuess(guess));
         dispatch(nextCity());
+        setGuess('');
     }
     return (
         <div>
